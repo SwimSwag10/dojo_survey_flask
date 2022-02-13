@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Dojo Survey</title>
+</head>
+<body>
+  <form action="/create/survey" method="post" id="container">
+      {% with messages = get_flashed_messages() %}  <!-- decalare a variable called messages -->
+        {% if messages %}                         <!-- check to see if there are any messages -->
+          {% for message in messages %}           <!-- loop through the messages -->
+            <p>{{ message }}</p>                  <!-- display each message -->
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <h1>Dojo Survey</h1>
+      <hr class="mb-4">
+      <p>Name:</p>
+      <input type="text" name="name">
+      <p>Dojo Location:</p>
+      <select name="location" class="form-select">
+        <option selected value="">Click for Locations</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Now York">Now York</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Bellvue">Bellvue</option>
+        <option value="Online">Online</option>
+      </select>
+      <p>Favorite Language:</p>
+      <select name="language" class="form-select">
+        <option selected value="">Click for Languages</option>
+        <option value="Spanish">Spanish</option>
+        <option value="French">French</option>
+        <option value="Russian">Russian</option>
+        <option value="Greek">Greek</option>
+        <option value="Portugese">Portugese</option>
+      </select>
+      <p>Comments:</p>
+      <input type="text" name="comments" id="commentbox">
+      <input type="submit" name="Submit" class="btn btn-primary">
+    </form>
+</body>
+</html>
